@@ -1,0 +1,2 @@
+cd polynote
+./polynote.py
