@@ -92,6 +92,8 @@ storage:
 
 #dependencies:
 #  scala:
+#    - org.apache.hadoop:hadoop-azure:3.2.1
+#    - io.delta:delta-core_2.12:1.1.0
 #    - org.typelevel:cats-core_2.11:1.6.0
 #    - com.mycompany:my-library:jar:all:1.0.0
 #  python:
@@ -133,12 +135,13 @@ storage:
 
 spark:
   properties:
-    spark.master: local[1]
+    spark.master: local[2]
 #    spark.driver.memory: 28g
 #    spark.executor.memory: 60g
 #    spark.driver.userClasspathFirst: true
 #    spark.executor.userClasspathFirst: true
 #  spark_submit_args: "--some --arguments"
+  spark_submit_args: "--packages org.apache.hadoop:hadoop-azure:3.2.1,io.delta:delta-core_2.12:1.1.0 --conf \"spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension\" --conf \"spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog\""
 #  dist_classpath_filter: hadoop.*\.jar
 
 
